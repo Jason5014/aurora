@@ -1,0 +1,110 @@
+$inputPrefixCls: au-input;
+
+.#{$inputPrefixCls}-wrap {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+.#{$inputPrefixCls}-icon-wrap {
+  height: 100%;
+  width: 35px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $input-color;
+  position: absolute;
+  top: 0;
+  right: 0;
+  svg {
+    color: $input-placeholder-color;
+  }
+}
+.#{$inputPrefixCls}-inner {
+  width: 100%;
+  padding: $input-padding-y $input-padding-x;
+  font-family: $input-font-family;
+  font-size: $input-font-size;
+  font-weight: $input-font-weight;
+  line-height: $input-line-height;
+  border: $input-border-width solid $input-border-color;
+  box-shadow: $input-box-shadow;
+  border-radius: $input-border-radius;
+  background-color: $input-bg;
+  &:focus{
+    background-color: $input-focus-bg;
+    border-color: $input-focus-border-color;
+    color: $input-focus-color;
+    box-shadow: $input-focus-box-shadow;
+    outline: 0;
+  }
+  &::placeholder {
+    color: $input-placeholder-color;
+    // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+    opacity: 1;
+  }
+  &:disabled {
+    background-color: $input-disabled-bg;
+    border-color: $input-disabled-border-color;
+    // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+    opacity: 1;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+.#{$inputPrefixCls}-lg {
+  .#{$inputPrefixCls}-inner {
+    padding: $input-padding-y-lg $input-padding-x-lg;
+    font-size: $input-font-size-lg;
+    border-radius: $input-border-radius-lg;
+  }
+}
+.#{$inputPrefixCls}-sm {
+  .#{$inputPrefixCls}-inner {
+    padding: $input-padding-y-sm $input-padding-x-sm;
+    font-size: $input-font-size-sm;
+    border-radius: $input-border-radius-sm;
+  }
+}
+.#{$inputPrefixCls}-prepend,
+.#{$inputPrefixCls}-append {
+  display: flex;
+  align-items: center;
+  border: $input-border-width solid $input-border-color;
+  box-shadow: $input-box-shadow;
+  padding: $input-padding-y $input-padding-x;
+  font-size: $input-font-size;
+  font-weight: $font-weight-normal;
+  line-height: $input-line-height;
+  border-radius: $input-border-radius;
+  background-color: $input-group-addon-bg;
+  text-align: center;
+  white-space: nowrap;
+  color: $input-group-addon-color;
+  margin-bottom: 0;
+  & + .btn {
+    padding: 0;
+    border: 0;
+  }
+}
+.#{$inputPrefixCls}-group > .#{$inputPrefixCls}-append {
+  border-left: none;
+}
+.#{$inputPrefixCls}-group > .#{$inputPrefixCls}-prepend {
+  border-right: none;
+}
+.#{$inputPrefixCls}-group > .#{$inputPrefixCls}-append,
+.#{$inputPrefixCls}-group-prepend > .#{$inputPrefixCls}-inner {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.#{$inputPrefixCls}-group > .#{$inputPrefixCls}-prepend,
+.#{$inputPrefixCls}-group-append > .#{$inputPrefixCls}-inner {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.#{$inputPrefixCls}-group-icon .#{$inputPrefixCls}-inner {
+  padding-right: 35px;
+}

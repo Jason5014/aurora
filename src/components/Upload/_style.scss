@@ -1,0 +1,78 @@
+$uploadPrefixCls: au-upload;
+$uploadListPrefixCls: au-upload-list;
+$draggerPrefixCls: au-dragger;
+
+.#{$uploadPrefixCls} {
+
+}
+
+.#{$uploadListPrefixCls} {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  &-item {
+    line-height: 1.8;
+    margin-top: 5px;
+    box-sizing: border-box;
+    min-width: 200px;
+    position: relative;
+    font-size: 14px;
+    transition: all .5s cubic-bezier(.55,0,.1,1);
+    &-file-name {
+      margin-left: 5px;
+      margin-right: 40px;
+      svg {
+        margin-right: 5px;
+        color: $gray-500;
+      }
+      &.is-failed {
+        color: $danger;
+        svg {
+          color: $danger;
+        }
+      }
+    }
+    &-file-status {
+      display: block;
+      position: absolute;
+      right: 5px;
+      top: 0;
+      line-height: inherit;
+    }
+    &-file-actions {
+      display: none;
+      position: absolute;
+      right: 7px;
+      top: 0;
+      line-height: inherit;
+      cursor: pointer;
+    }
+    &:hover {
+      background-color: $gray-200;
+      .#{$uploadListPrefixCls}-item-file-status {
+        display: none;
+      }
+      .#{$uploadListPrefixCls}-item-file-actions {
+        display: block;
+      }
+    }
+  }
+}
+
+.#{$draggerPrefixCls} {
+  width: 360px;
+  height: 180px;
+  text-align: center;
+  border: 2px dashed $gray-300;
+  border-radius: 4px;
+  padding: 20px;
+  cursor: pointer;
+  background-color: $gray-100;
+  &:hover {
+    border-color: $primary;
+  }
+  &.is-dragover {
+    border-color: $primary;
+    background-color: rgba($primary, .2);
+  }
+}

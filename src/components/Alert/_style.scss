@@ -1,0 +1,39 @@
+$alertPrefixCls: au-alert !default;
+
+$alert-colors: (
+  "default": $primary,
+  "success": $success,
+  "warning": $warning,
+  "danger": $danger,
+);
+
+.#{$alertPrefixCls} {
+  padding: $alert-padding-y $alert-padding-x;
+  margin: $alert-margin-y $alert-margin-x;
+  border-radius: $alert-border-radius;
+  color: $alert-font-color;
+  position: relative;
+  &.hide {
+    // display: none;
+  }
+}
+
+.#{$alertPrefixCls}-title {
+  &.bold-title {
+    font-weight: $font-weight-bold;
+    margin-bottom: $headings-margin-bottom;
+  }
+}
+
+.#{$alertPrefixCls}-close {
+  cursor: pointer;
+  position: absolute;
+  right: $alert-padding-x;
+  top: $alert-padding-y;
+}
+
+@each $color, $value in $alert-colors {
+  .#{$alertPrefixCls}-#{$color} {
+    @include alert-style($value);
+  }
+}

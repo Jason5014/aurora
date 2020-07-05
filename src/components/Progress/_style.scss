@@ -1,0 +1,35 @@
+$processPrefixCls: au-progress-bar;
+
+.#{$processPrefixCls} {
+  width: 100%;
+  box-sizing: border-box;
+  &-outer {
+    overflow: hidden;
+    border-radius: $progress-border-radius;
+    background-color: $progress-bg;
+    position: relative;
+  }
+  &-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $progress-border-radius;
+    line-height: 1;
+    transition: $progress-bar-transition;
+    &-text {
+      color: $progress-bar-color;
+      font-size: $progress-font-size;
+      margin: 0 5px;
+    }
+  }
+}
+
+@each $key, $val in $theme-colors {
+  .color-#{$key} {
+    background-color: $val;
+  }
+}

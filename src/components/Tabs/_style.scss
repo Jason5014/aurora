@@ -1,0 +1,52 @@
+$tabsPrefixCls: au-tabs !default;
+$tabItemPrefixCls: au-tab-panel !default;
+
+.#{$tabsPrefixCls} {
+  .#{$tabsPrefixCls}-nav {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+    padding-left: 0;
+    margin-bottom: 0;
+    &-item {
+      display: block;
+      padding: $nav-link-padding-y $nav-link-padding-x;
+      cursor: pointer;
+      &.is-active {
+        color: $nav-tabs-link-active-color;
+      }
+      &:hover, &:focus {
+        color: $nav-tabs-link-hover-color;
+      }
+      &.disabled {
+        color: $nav-tabs-link-disabled-color;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+    }
+  }
+  &-line {
+    .#{$tabsPrefixCls}-nav {
+      &-item {
+        border-bottom: $nav-tabs-border-width * 2 solid transparent;
+        &.is-active, &:hover {
+          border-bottom-color: $nav-tabs-link-active-color;
+        }
+      }
+    }
+  }
+  &-pill {
+    .#{$tabsPrefixCls}-nav-item {
+      border: $nav-tabs-border-width solid transparent;
+      margin-bottom: -$nav-tabs-border-width;
+      &.is-active {
+        border-color: $nav-tabs-line-active-border-color;
+        border-radius: $nav-tabs-border-radius $nav-tabs-border-radius 0 0;
+      }
+    }
+  }
+  &-content {
+    margin-top: $nav-tabs-content-margin;
+  }
+}
