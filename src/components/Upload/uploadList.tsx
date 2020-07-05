@@ -48,4 +48,4 @@ UploadList.defaultProps = {
   prefixCls: 'au-upload-list',
 }
 
-export default UploadFile;
+export default UploadList;

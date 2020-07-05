@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import Button from '../Button/button';
 import axios from 'axios';
-import { UploadList } from './uploadList';
+import UploadList from './uploadList';
 import { Dragger } from './dragger';
 
 export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'failed';
