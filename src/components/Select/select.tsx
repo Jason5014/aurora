@@ -1,4 +1,4 @@
-import React, { FC, useState, useRef, FunctionComponentElement, createContext, CSSProperties, KeyboardEvent } from 'react';
+import React, { FC, useState, useRef, FunctionComponentElement, createContext, CSSProperties, KeyboardEvent, MouseEvent } from 'react';
 import classnames from 'classnames';
 
 import Transition from '../Transition/transition';
@@ -33,7 +33,7 @@ export interface SelectPropsType {
   /** 下拉菜单显示隐藏时触发回调 */
   onVisibleChange?: (visible: boolean) => void;
   /** 选中值发生变化时触发回调 */
-  onChange?: (selectedValue: string, selectedValues: string[]) => void;
+  onChange?: (selected: string, selectedValues: string[]) => void;
 }
 
 export interface SelectProps extends SelectPropsType {
@@ -75,12 +75,7 @@ export const Select: FC<SelectProps> = ({ prefixCls, className, style, disabled,
       changeVisible(false);
     }
     setSelectedValues(newSelectedValues);
-    if (onChange) {
-      onChange(selected, selectedValues);
-    }
-  }
-  const handleDelete = (deleteValue: string) => {
-    setSelectedValues(selectedValues.filter(v => v !== deleteValue));
+    onChange?.(selected, newSelectedValues);
   }
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -120,7 +115,10 @@ export const Select: FC<SelectProps> = ({ prefixCls, className, style, disabled,
             <Transition in={checked} timeout={300} animation="zoom-in-left" key={option.value} >
               <li className={tagCls} >
                 {option.label}
-                {multiple && <Icon icon="times" onClick={() => handleDelete(option.value)} />}
+                {multiple && <Icon icon="times" onClick={(e: MouseEvent) => {
+                  e.stopPropagation();
+                  handleSelect(option.value, true);
+                }} />}
               </li>
             </Transition>
           );

@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react'
-import Button from '../button';
-import { ButtonProps } from '../PropsType';
+import Button, { ButtonProps } from './button';
 
 const prefixCls = 'au-btn';
 

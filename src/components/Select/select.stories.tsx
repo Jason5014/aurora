@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Select from './select';
 import Option from './option';
+import { action } from '@storybook/addon-actions';
 
 const dataSource = [
   { value: 'nihao' },
@@ -12,7 +13,7 @@ const dataSource = [
 ];
 
 const defaultSelect = () => (
-  <Select placeholder="请选择">
+  <Select placeholder="请选择" onVisibleChange={action('visible changed')} onChange={action('changed')}>
     {dataSource.map(d => (
       <Option {...d} />
     ))}
@@ -20,7 +21,7 @@ const defaultSelect = () => (
 );
 
 const multipleSelect = () => (
-  <Select placeholder="请选择" multiple>
+  <Select placeholder="请选择" multiple onVisibleChange={action('visible changed')} onChange={action('changed')}>
     {dataSource.map(d => (
       <Option {...d} />
     ))}
