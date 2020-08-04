@@ -1,0 +1,29 @@
+.au-tree-line {
+  min-height: 44px;
+  display: flex;
+  margin: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.au-tree-li {
+  min-height: 44px;
+}
+
+.au-tree-filling {
+  flex: 0 1 auto;
+}
+
+.au-tree-title {
+  flex: 1 1;
+  padding: 7px 8px;
+}
+
+.au-tree-extend {
+  flex: 0 1 auto;
+  padding: 7px 8px;
+}
+
+.au-tree-checkbox {
+  flex: 0 1 auto;
+  padding: 7px 8px;
+}

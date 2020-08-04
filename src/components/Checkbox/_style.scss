@@ -1,0 +1,18 @@
+$auCheckboxPrefixCls: au-checkbox;
+
+.#{$auCheckboxPrefixCls} {
+  display: inline-block;
+  .au-checkbox-inner {
+    width: 21px;
+    height: 21px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    border-radius: 50%;
+    &.is-checked {
+      background-color: $primary;
+    }
+    &.is-disabled {
+      background-color: $light;
+    }
+  }
+}
