@@ -2,6 +2,7 @@ import React, { CSSProperties, FC, useState, useRef, useEffect, createContext, C
 import { isEqual } from 'lodash';
 import TreeNode from './treeNode';
 import { cloneObj, traver } from './util';
+import { TreeList } from './treeList';
 
 // 树节点数据
 export interface TreeDataBase {
@@ -40,11 +41,18 @@ export interface TreeContextProps {
   indentLength?: number;
   treeIcon?: CustomRender;
   treeNodeMap?: TreeNodeMap<TreeData>;
+  expandedNodeKeys?: string[];
+  checkedNodeKeys?: string[];
   getKey?: (node: TreeData) => string;
   getCheckable?: (node: TreeData) => boolean;
   handleExpand?: (key: string) => void;
   handleChecked?: (key: string) => void;
   decorator?: (content: CustomRender, node?: TreeData, key?: string) => CustomRender;
+  handleDecorator?: any;
+  renderIcon?: (icon: CustomRender, node: TreeData) => CustomRender;
+  renderLeaf?: (node: TreeData, key: string, level: number) => CustomRender;
+  renderNode?: (node: TreeData, key: string, level: number) => CustomRender;
+  renderTitle?: (node: TreeData, key: string, level: number) => CustomRender;
 }
 
 // 树类型
@@ -356,7 +364,7 @@ export const Tree: FC<TreeProps> = (props) => {
     );
   }
 
-  let newDatas;
+  let newDatas: TreeData[];
   if (treeData instanceof Array) {
     newDatas = treeData;
   } else {
@@ -370,10 +378,13 @@ export const Tree: FC<TreeProps> = (props) => {
     indentLength: props.indentLength,
     isInline: props.isInline,
     treeNodeMap: treeNodeMap.current,
+    checkedNodeKeys,
+    expandedNodeKeys,
     getKey,
     getCheckable,
     handleExpand,
     handleChecked,
+    handleDecorator,
     decorator: props.decorator,
   };
 
@@ -381,7 +392,8 @@ export const Tree: FC<TreeProps> = (props) => {
     <TreeContext.Provider value={treeContext}>
       <div className={`${prefixCls}-wrapper ${className}`} style={style}>
         <div className={`${prefixCls}-list`}>
-          {newDatas.map(data => renderTreeNode(data))}
+          {/* {newDatas.map(data => renderTreeNode(data))} */}
+          <TreeList datas={newDatas} />
         </div>
       </div>
     </TreeContext.Provider>

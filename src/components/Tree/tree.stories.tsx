@@ -249,7 +249,7 @@ export const OrginazeTree: FC = () => {
 export const PerformanceTest: FC = () => {
   const [treeData] = useState(() => {
     const datas = { domid: 'root', key: '0', haschild: true, isopen: true, name: 'TreeRoot', childs: [] };
-    for (let i = 1; i < 5000; i += 1) {
+    for (let i = 1; i < 2000; i += 1) {
       datas.childs.push({
         domid: `node-${i}`,
         key: `${i}`,
